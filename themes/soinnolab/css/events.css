@@ -1,0 +1,12 @@
+.acf-map {width: 100%;height: 400px;border: #ccc solid 1px;margin: 20px 0;}
+/* fixes potential theme css conflict */
+.acf-map img {max-width: inherit !important;}
+.events{overflow: hidden;background-color: #f2f2f2;margin-bottom: 50px;}
+.events .acf-map{float: left;width: 65.7%;box-sizing:border-box;margin: 0;border: 0;}
+.events .events-info{float: left;width: 34.3%;box-sizing:border-box;padding: 40px;}
+.events .events-info ul li{padding-left: 0;}
+.events .events-info ul li:before{display: none;}
+.events .events-info ul li label{font-weight: bold;float: left;}
+.events dl{overflow: hidden;margin-bottom: 15px;}
+.events dl dt{float: left; width: 18.5%;font-weight: bold;}
+.events dl dd{float: left; width: 81.5%;}

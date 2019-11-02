@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* ie7 */
+*:first-child+html header{}
+
+/* ie8 */
+@media \0screen {
+	/*
+	header menu li.l0 a.m0{font-weight:bold}
+	.fc02 .rightArea .header h1{font-weight:bold}
+	.lc03 li.img em{font-weight:bold}
+	.lc04 li dl dt a{font-weight:bold}
+	.ng03 li a.m0{font-weight:bold}
+	.ng04 dt a{font-weight:bold}
+	.ng05 dt{font-weight:bold}
+	*/
+}
+
+/* all */
+/*
+.lc03 li.img span{filter: alpha(opacity=0)}
+.lc03 li.img a:hover span{filter:alpha(opacity=60)}
+.ng03{clear:both;}
+*/

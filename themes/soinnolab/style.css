@@ -1,0 +1,60 @@
+/*
+Theme Name: 서울혁신리서치랩
+Author: Slowalk
+Author URI: https://www.slowalk.co.kr/
+Description: 서울혁신리서치랩을 위한 워드프레스 테마입니다.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: html5, soinnolab, slowalk
+Text Domain: soinnolab
+*/
+
+@charset "utf-8";
+/* Font */
+/*font*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+/* Common */
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select, menu {
+    margin: 0;
+    padding: 0
+}
+
+header, nav, article, section, footer, address, aside {
+    display: block;
+}
+
+img, fieldset {
+    border: 0
+}
+
+ul, ol, menu {
+    list-style: none
+}
+
+em, address {
+    font-style: normal
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+    text-decoration: underline
+}
+
+body, input, textarea, select, button, table {
+    font-family: 'Noto Sans KR', 나눔고딕, 맑은고딕, MalgunGothic, 돋움, Dotum, Arial, sans-serif;
+    font-size: 15px;
+    color: #414141;
+    line-height: 18px;
+    -webkit-appearance: none;
+}
+
+.lc02 ul li a span, .lc02 .more, .th02 ul li a i,
+.lc01 li dl dt a {
+    color: #222;
+}

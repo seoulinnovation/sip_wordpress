@@ -1,0 +1,65 @@
+jQuery( document ).ready( function( $ ) {
+	$("[class=soinnolab-facebook-login-btn]").click(function(){
+		loginFB();
+	});
+	
+    function loginFB(){  
+        FB.login(function(response) {
+            if (response.authResponse) {
+                // callback 영역입니다. 자신의 브라우저가 페북에 연동되면 여기로직을 처리 하게 되죠
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        FB.api('/me?fields=name,email', function(user) {
+                            if ( user ) {                              
+                                var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; 
+                                if( regex.test( user.email ) === false ) { 
+                                    alert("이메일 주소를 받아올 수 없습니다. 페이스북 설정을 확인해주세요"); 
+                                    location.reload();
+                                }else{	                                
+                                    jQuery.ajax({
+                                        url: "/wp-admin/admin-ajax.php",
+                                        type: 'POST',
+                                        data: {FBname : user.name, FBemail : user.email, FBid : user.id, action:'soinnolab_facebook_login'},
+                                        beforeSend:function(){
+								            $('.body-loading').removeClass('display-none');
+								        },
+								        complete:function(){
+								            $('.body-loading').addClass('display-none');	     
+								        },
+                                        success: function(re){
+	                                        var re = $.parseJSON(re);
+	                                        var refer = $("input[name=refer]").val();
+                                            if (re == "ok") {	                                            
+	                                            if(refer) location.replace(refer);
+                                                else location.replace('/');
+                                            }else{
+                                                alert('fail');                                                
+                                            }   
+                                        }
+                                    });
+                                }                                          
+                            }else{
+                            	alert("페이스북 연결 오류입니다. 페이스북 설정을 확인해주세요.");
+                            }
+                        });   
+                    }else if (response.status === 'not_authorized') {
+                        alert("페이스북 연결 오류입니다. 페이스북 설정을 확인해주세요.");
+                    }else {
+                        alert("페이스북 연결 오류입니다. 페이스북 설정을 확인해주세요.");
+                    }
+                });
+            } else {
+                //오류가 났거나 연동이 실패 했을때 처리 하는부분..... 
+                alert('페이스북 연결 오류입니다. ' + response);
+            }
+        }, {scope: 'public_profile,email'});
+    }
+    // Load the SDK Asynchronously
+	(function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/ko_KR/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+});
